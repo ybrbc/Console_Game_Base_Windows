@@ -16,4 +16,6 @@ add_executable(Console_Game_Base_Windows
         WindowsConsoleGameBase/Square.h
         WindowsConsoleGameBase/Vector2.cpp
         WindowsConsoleGameBase/Vector2.h
-    )
+        WindowsConsoleGameBase/Tetris.cpp
+        WindowsConsoleGameBase/Tetris.h
+)
