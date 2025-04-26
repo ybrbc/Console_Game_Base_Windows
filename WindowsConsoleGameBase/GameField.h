@@ -13,6 +13,8 @@ public:
     void resize(size_t width, size_t height);
 
     void render(PaintDevice &paintDevice);
+
+    size_t getWidth() const;
 };
 
 

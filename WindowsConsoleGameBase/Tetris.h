@@ -3,6 +3,7 @@
 #include "Engine.h"
 #include "Figure.h"
 #include "GameField.h"
+#include "TetrisConstants.h"
 
 
 class Tetris : public Engine {
@@ -20,8 +21,7 @@ public:
 protected:
     bool end() const override { return false; }
 
-    void on_button_press(const int button) override {
-    }
+    void on_button_press(const int button) override;
 
     void update(const int dt) override;
 

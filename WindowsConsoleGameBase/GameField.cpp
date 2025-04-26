@@ -37,3 +37,5 @@ void GameField::render(PaintDevice &paintDevice) {
 
     // https://geekboards.ru/page/alt-codes
 }
+
+size_t GameField::getWidth() const { return m_Width; }

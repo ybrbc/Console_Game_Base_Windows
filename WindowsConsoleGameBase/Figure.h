@@ -25,6 +25,10 @@ public:
 
     void render(PaintDevice &paintDevice);
 
+    void move_right(size_t width);
+
+    void move_left();
+
     void update(double dt);
 };
 
