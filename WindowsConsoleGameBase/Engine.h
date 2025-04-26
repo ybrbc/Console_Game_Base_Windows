@@ -31,7 +31,7 @@ protected:
 	virtual void render(PaintDevice &paintDevice) = 0;
 
 private:
-	void uppdateInput();
+	void updateInput();
 
 	PaintDevice m_PaintDevice;
 	std::set<int> m_PressedKeys;

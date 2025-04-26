@@ -7,8 +7,8 @@
 
 class Tetris : public Engine {
     GameField m_GameField;
-    const size_t m_Width = 14;
-    const size_t m_Height = 26;
+    const size_t m_Width = TetrisConstants::Field::m_Width;
+    const size_t m_Height = TetrisConstants::Field::m_Height;
     Figure *m_Figure;
 
 public:

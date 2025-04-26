@@ -1,6 +1,6 @@
 #include "IBlock.h"
-#include "ConsoleOutput.h"
+#include "TetrisConstants.h"
 
 IBlock::IBlock(Point position) : Figure(position) {
-    m_Body = ConsoleOutput::Tetris::I;
+    m_Body = TetrisConstants::Figure::I;
 }

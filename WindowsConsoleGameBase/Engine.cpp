@@ -11,7 +11,7 @@ Engine::ErrorCode Engine::run() {
 	while (!end()) {
 		// Handle input
 		//============================================
-		uppdateInput();
+		updateInput();
 		//============================================
 
 		//Logic Update
@@ -40,7 +40,7 @@ Engine::ErrorCode Engine::run() {
 	return errorCode;
 }
 
-void Engine::uppdateInput() {
+void Engine::updateInput() {
 	for (const int &key: m_TrackedKeys) {
 		const SHORT keyState = GetKeyState(key);
 		const bool isDown = keyState & 0x8000;
