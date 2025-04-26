@@ -16,8 +16,8 @@ namespace {
 	}
 }
 
-PaintDevice::PaintDevice() 
-	: m_Size(40,40) {
+PaintDevice::PaintDevice()
+	: m_Size(40, 40) {
 	set_font();
 	m_ConsoleOut = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -38,14 +38,14 @@ bool PaintDevice::ready() const {
 	return m_Ready;
 }
 
-void PaintDevice::resize(const Size& size) {
+void PaintDevice::resize(const Size &size) {
 	m_Size = size;
-	SMALL_RECT windowSize = { 0, 0, static_cast<SHORT>(m_Size.width() - 1), static_cast<SHORT>(m_Size.height() - 1) };
-	COORD windowBufSize = { static_cast<SHORT>(m_Size.width()), static_cast<SHORT>(m_Size.height()) };
+	SMALL_RECT windowSize = {0, 0, static_cast<SHORT>(m_Size.width() - 1), static_cast<SHORT>(m_Size.height() - 1)};
+	COORD windowBufSize = {static_cast<SHORT>(m_Size.width()), static_cast<SHORT>(m_Size.height())};
 
 	m_Ready = false;
 
-	SMALL_RECT screen = { 0, 0, 1, 1 };
+	SMALL_RECT screen = {0, 0, 1, 1};
 	if (!SetConsoleWindowInfo(m_ConsoleOut, TRUE, &screen)) {
 		std::cout << __LINE__ << ": MAX SetConsoleScreenBufferSize failed with error " << GetLastError() << std::endl;
 		return;
@@ -81,16 +81,14 @@ void PaintDevice::resize(const Size& size) {
 
 void PaintDevice::clear() {
 	if (!m_Ready) return;
-	for (int x = 0; x < m_BufferSize.X; x++)
-	{
-		for (int y = 0; y < m_BufferSize.Y; y++)
-		{
+	for (int x = 0; x < m_BufferSize.X; x++) {
+		for (int y = 0; y < m_BufferSize.Y; y++) {
 			set_char(Vector2(x, y), L' ');
 		}
 	}
 }
 
-void PaintDevice::set_char(const Vector2& position, wchar_t c) {
+void PaintDevice::set_char(const Vector2 &position, wchar_t c) {
 	if (!m_Ready) return;
 	if (Square(Vector2(0, 0), m_Size).hit(position)) {
 		const int idx = position.x() + m_BufferSize.X * position.y();
@@ -99,7 +97,7 @@ void PaintDevice::set_char(const Vector2& position, wchar_t c) {
 	}
 }
 
-wchar_t PaintDevice::get_char(const Vector2& position) {
+wchar_t PaintDevice::get_char(const Vector2 &position) {
 	if (!m_Ready) return L'\0';
 	if (Square(Vector2(0, 0), m_Size).hit(position)) {
 		const int idx = position.x() + m_BufferSize.X * position.y();

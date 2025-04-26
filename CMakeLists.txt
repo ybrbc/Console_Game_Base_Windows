@@ -5,8 +5,6 @@ project(Console_Game_Base_Windows)
 add_executable(Console_Game_Base_Windows
         WindowsConsoleGameBase/Engine.cpp
         WindowsConsoleGameBase/Engine.h
-        WindowsConsoleGameBase/ExampleGame.cpp
-        WindowsConsoleGameBase/ExampleGame.h
         WindowsConsoleGameBase/main.cpp
         WindowsConsoleGameBase/PaintDevice.cpp
         WindowsConsoleGameBase/PaintDevice.h
@@ -24,4 +22,5 @@ add_executable(Console_Game_Base_Windows
         WindowsConsoleGameBase/Figure.h
         WindowsConsoleGameBase/IBlock.cpp
         WindowsConsoleGameBase/IBlock.h
+        WindowsConsoleGameBase/ConsoleOutput.h
 )

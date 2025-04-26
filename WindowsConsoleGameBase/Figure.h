@@ -23,21 +23,9 @@ public:
     Figure(Point position): m_Position(position) {
     }
 
-    void render(PaintDevice &paintDevice) {
-        for (const Point &point: m_Body) {
-            Vector2 v(point.x + m_Position.x,
-                      point.y + m_Position.y);
-            paintDevice.set_char(v, 8);
-        }
-    }
+    void render(PaintDevice &paintDevice);
 
-    void update(double dt) {
-        m_TimeFromLastUpdate += dt;
-        if (m_TimeFromLastUpdate > m_TimeForUpdate) {
-            m_TimeFromLastUpdate = 0;
-            ++m_Position.y;
-        }
-    }
+    void update(double dt);
 };
 
 

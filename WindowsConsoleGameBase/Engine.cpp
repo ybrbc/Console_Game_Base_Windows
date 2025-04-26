@@ -27,8 +27,7 @@ Engine::ErrorCode Engine::run() {
 
 		// Render part
 		//============================================
-		if (!m_PaintDevice.ready())
-		{
+		if (!m_PaintDevice.ready()) {
 			errorCode = ErrorCode::paint_device_not_ready;
 			break;
 		}
@@ -42,7 +41,7 @@ Engine::ErrorCode Engine::run() {
 }
 
 void Engine::uppdateInput() {
-	for (const int& key : m_TrackedKeys) {
+	for (const int &key: m_TrackedKeys) {
 		const SHORT keyState = GetKeyState(key);
 		const bool isDown = keyState & 0x8000;
 
@@ -50,8 +49,7 @@ void Engine::uppdateInput() {
 		if (isDown && keyItr == m_PressedKeys.end()) {
 			m_PressedKeys.insert(key);
 			on_button_press(key);
-		}
-		else if (!isDown && keyItr != m_PressedKeys.end()) {
+		} else if (!isDown && keyItr != m_PressedKeys.end()) {
 			m_PressedKeys.erase(keyItr);
 		}
 	}
@@ -63,8 +61,7 @@ void Engine::track_key(const int key) {
 
 void Engine::untrack_key(const int key) {
 	const std::set<int>::const_iterator keyItr = m_TrackedKeys.find(key);
-	if (keyItr != m_TrackedKeys.end())
-	{
+	if (keyItr != m_TrackedKeys.end()) {
 		m_TrackedKeys.erase(keyItr);
 	}
 }

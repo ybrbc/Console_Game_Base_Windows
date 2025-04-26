@@ -3,7 +3,6 @@
 #include "Engine.h"
 #include "Figure.h"
 #include "GameField.h"
-#include "IBlock.h"
 
 
 class Tetris : public Engine {
@@ -13,11 +12,7 @@ class Tetris : public Engine {
     Figure *m_Figure;
 
 public:
-    Tetris() {
-        paint_device().resize(Size(m_Width + 6, m_Height));
-        m_GameField.resize(m_Width, m_Height);
-        m_Figure = new IBlock(Point(5, 1));
-    }
+    Tetris();
 
     ~Tetris() override {
     }
@@ -28,14 +23,9 @@ protected:
     void on_button_press(const int button) override {
     }
 
-    void update(const int dt) override {
-        m_Figure->update(dt);
-    }
+    void update(const int dt) override;
 
-    void render(PaintDevice &paintDevice) override {
-        m_GameField.render(paintDevice);
-        m_Figure->render(paintDevice);
-    }
+    void render(PaintDevice &paintDevice) override;
 };
 
 #endif //TETRIS_H
