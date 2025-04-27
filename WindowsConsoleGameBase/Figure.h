@@ -18,6 +18,7 @@ protected:
     double m_TimeFromLastUpdate = 0;
     double m_TimeForUpdate = 500;
     std::vector<Point> m_Body;
+    Point m_PositionBackup;
 
 public:
     Figure(Point position): m_Position(position) {
@@ -25,11 +26,21 @@ public:
 
     void render(PaintDevice &paintDevice);
 
-    void move_right(size_t width);
+    void move_right();
 
     void move_left();
 
     void update(double dt);
+
+    const std::vector<Point> &get_body() const;
+
+    Point get_position() const;
+
+    void set_position(Point position);
+
+    void backup();
+
+    void restore();
 };
 
 

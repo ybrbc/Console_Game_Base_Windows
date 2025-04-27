@@ -10,16 +10,12 @@ void Figure::render(PaintDevice &paintDevice) {
     }
 }
 
-void Figure::move_right(size_t width) {
-    if (m_Position.x < width -3) {
-        ++m_Position.x;
-    }
+void Figure::move_right() {
+    ++m_Position.x;
 }
 
 void Figure::move_left() {
-    if (0 < m_Position.x) {
-        --m_Position.x;
-    }
+    --m_Position.x;
 }
 
 void Figure::update(double dt) {
@@ -28,4 +24,24 @@ void Figure::update(double dt) {
         m_TimeFromLastUpdate = 0;
         ++m_Position.y;
     }
+}
+
+const std::vector<Point> &Figure::get_body() const {
+    return m_Body;
+}
+
+Point Figure::get_position() const {
+    return m_Position;
+}
+
+void Figure::set_position(Point position) {
+    m_Position = position;
+}
+
+void Figure::backup() {
+    m_PositionBackup = m_Position;
+}
+
+void Figure::restore() {
+    m_Position = m_PositionBackup;
 }

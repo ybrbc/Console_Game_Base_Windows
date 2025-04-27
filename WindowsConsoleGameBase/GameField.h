@@ -1,6 +1,8 @@
 #ifndef GAMEFIELD_H
 #define GAMEFIELD_H
 #include <vector>
+
+#include "Figure.h"
 #include "PaintDevice.h"
 
 
@@ -15,6 +17,8 @@ public:
     void render(PaintDevice &paintDevice);
 
     size_t getWidth() const;
+
+    bool has_collision(const Figure &figure);
 };
 
 

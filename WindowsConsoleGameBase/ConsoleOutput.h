@@ -12,6 +12,7 @@ namespace ConsoleOutput {
         constexpr wchar_t DL_CORNER = 200; // ╚
         constexpr wchar_t UR_CORNER = 187; // ╗
         constexpr wchar_t DR_CORNER = 188; // ╝
+        // https://geekboards.ru/page/alt-codes
     }
 
     namespace Messages {

@@ -34,8 +34,18 @@ void GameField::render(PaintDevice &paintDevice) {
             paintDevice.set_char(v, m_Field[y][x]);
         }
     }
-
-    // https://geekboards.ru/page/alt-codes
 }
 
 size_t GameField::getWidth() const { return m_Width; }
+
+bool GameField::has_collision(const Figure &figure) {
+    Point position = figure.get_position();
+    for (const Point &point: figure.get_body()) {
+        if (point.x + position.x < 1 || point.x + position.x > m_Width - 2)
+            return true;
+        if (point.y + position.y < 1 || point.y + position.y > m_Height - 2) {
+            return true;
+        }
+    }
+    return false;
+}
