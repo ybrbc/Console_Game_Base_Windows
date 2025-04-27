@@ -19,6 +19,8 @@ public:
     size_t getWidth() const;
 
     bool has_collision(const Figure &figure);
+
+    void merge(const Figure &figure);
 };
 
 
