@@ -45,3 +45,7 @@ void Figure::backup() {
 void Figure::restore() {
     m_Position = m_PositionBackup;
 }
+
+void Figure::boost() {
+    m_TimeForUpdate = TetrisConstants::Field::BoostSpeed;
+}

@@ -7,6 +7,7 @@ Tetris::Tetris() {
     m_Figure = new IBlock(Point(5, 1));
     track_key(VK_LEFT);
     track_key(VK_RIGHT);
+    track_key(VK_DOWN);
 }
 
 void Tetris::on_button_press(const int button) {
@@ -17,6 +18,9 @@ void Tetris::on_button_press(const int button) {
             break;
         case VK_RIGHT:
             m_Figure->move_right();
+            break;
+        case VK_DOWN:
+            m_Figure->boost();
             break;
     }
     if (m_GameField.has_collision(*m_Figure)) {

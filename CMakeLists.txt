@@ -24,4 +24,5 @@ add_executable(Console_Game_Base_Windows
         WindowsConsoleGameBase/IBlock.h
         WindowsConsoleGameBase/ConsoleOutput.h
         WindowsConsoleGameBase/TetrisConstants.h
+        WindowsConsoleGameBase/Point.h
 )

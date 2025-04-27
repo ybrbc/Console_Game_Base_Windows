@@ -1,6 +1,6 @@
 #ifndef TETRISCONSTANTS_H
 #define TETRISCONSTANTS_H
-#include "Figure.h"
+#include "Point.h"
 
 namespace TetrisConstants {
     namespace Figure {
@@ -9,10 +9,13 @@ namespace TetrisConstants {
             Point(1, 2), Point(1, 3)
         };
     }
+
     namespace Field {
-        const size_t m_Width = 14;
-        const size_t m_Height = 26;
-        const size_t m_InfoPanelWidth = 6;
+        constexpr size_t m_Width = 14;
+        constexpr size_t m_Height = 26;
+        constexpr size_t m_InfoPanelWidth = 6;
+        constexpr size_t NormalSpeed = 500;
+        constexpr size_t BoostSpeed = 50;
     }
 }
 #endif //TETRISCONSTANTS_H

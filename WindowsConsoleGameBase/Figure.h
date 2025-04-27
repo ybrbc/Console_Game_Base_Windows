@@ -3,20 +3,14 @@
 #include <vector>
 
 #include "PaintDevice.h"
-
-struct Point {
-    int x;
-    int y;
-
-    Point(int _x = 0, int _y = 0) : x(_x), y(_y) {
-    }
-};
+#include "Point.h"
+#include "TetrisConstants.h"
 
 class Figure {
 protected:
     Point m_Position;
     double m_TimeFromLastUpdate = 0;
-    double m_TimeForUpdate = 500;
+    double m_TimeForUpdate = TetrisConstants::Field::NormalSpeed;
     std::vector<Point> m_Body;
     Point m_PositionBackup;
 
@@ -41,6 +35,8 @@ public:
     void backup();
 
     void restore();
+
+    void boost();
 };
 
 
