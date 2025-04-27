@@ -58,4 +58,16 @@ void GameField::merge(const Figure &figure) {
     for (const Point &point: figure.get_body()) {
         m_Field[point.y + position.y - 1][point.x + position.x - 1] = ConsoleOutput::Symbols::BLOCK;
     }
+    for (size_t i = 0; i < m_Field.size(); i++) {
+        bool lineIsFull = true;
+        for (size_t j = 0; j < m_Field[i].size(); j++) {
+            lineIsFull = lineIsFull && m_Field[i][j] == ConsoleOutput::Symbols::BLOCK;
+        }
+        if (lineIsFull) {
+            for (size_t j = i; j > 0; j--) {
+                m_Field[j] = m_Field[j - 1];
+            }
+            m_Field[0] = std::vector<wchar_t>(m_Width - 2, ConsoleOutput::Symbols::AIR);
+        }
+    }
 }
