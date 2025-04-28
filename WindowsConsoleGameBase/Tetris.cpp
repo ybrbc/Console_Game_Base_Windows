@@ -4,7 +4,7 @@
 Tetris::Tetris() {
     paint_device().resize(Size(m_Width + TetrisConstants::Field::m_InfoPanelWidth, m_Height));
     m_GameField.resize(m_Width, m_Height);
-    m_Figure = new IBlock(TetrisConstants::Figure::SPAWNPOINT);
+    m_Figure = new IBlock(TetrisConstants::Figure::spawnPoint);
     track_key(VK_LEFT);
     track_key(VK_RIGHT);
     track_key(VK_DOWN);
@@ -67,7 +67,7 @@ void Tetris::update(int dt) {
         if (m_GameField.has_collision(*m_Figure)) {
             m_Figure->restore();
             m_GameField.merge(*m_Figure);
-            m_Figure = new IBlock(TetrisConstants::Figure::SPAWNPOINT);
+            m_Figure = new IBlock(TetrisConstants::Figure::spawnPoint);
         }
     }
 }
