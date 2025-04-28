@@ -48,9 +48,6 @@ void Figure::restore() {
     m_CurrentRotate = m_CurrentRotateBackup;
 }
 
-void Figure::boost() {
-    m_TimeForUpdate = TetrisConstants::Field::BoostSpeed;
-}
 
 void Figure::rotate() {
     if (++m_CurrentRotate > 3) { m_CurrentRotate = 0; }

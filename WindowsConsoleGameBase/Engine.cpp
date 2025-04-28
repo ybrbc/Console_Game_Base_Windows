@@ -44,13 +44,15 @@ void Engine::updateInput() {
 	for (const int &key: m_TrackedKeys) {
 		const SHORT keyState = GetKeyState(key);
 		const bool isDown = keyState & 0x8000;
-
-		const std::set<int>::const_iterator keyItr = m_PressedKeys.find(key);
-		if (isDown && keyItr == m_PressedKeys.end()) {
-			m_PressedKeys.insert(key);
-			on_button_press(key);
-		} else if (!isDown && keyItr != m_PressedKeys.end()) {
-			m_PressedKeys.erase(keyItr);
+		if (isDown) {
+			if (m_PressedKeys.contains(key)) {
+				++m_PressedKeys[key];
+			} else {
+				m_PressedKeys[key] = 1;
+			}
+			on_button_press(key, m_PressedKeys[key]);
+		} else {
+			m_PressedKeys.erase(key);
 		}
 	}
 }

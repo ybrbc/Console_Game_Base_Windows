@@ -1,5 +1,6 @@
 #pragma once
 
+#include <map>
 #include <set>
 #include "PaintDevice.h"
 
@@ -24,7 +25,7 @@ protected:
 
 	virtual bool end() const = 0;
 
-	virtual void on_button_press(const int button) = 0;
+	virtual void on_button_press(int button, int time) = 0;
 
 	virtual void update(const int dt) = 0;
 
@@ -34,6 +35,6 @@ private:
 	void updateInput();
 
 	PaintDevice m_PaintDevice;
-	std::set<int> m_PressedKeys;
+	std::map<int, int> m_PressedKeys;
 	std::set<int> m_TrackedKeys;
 };

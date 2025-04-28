@@ -71,3 +71,11 @@ void GameField::merge(const Figure &figure) {
         }
     }
 }
+
+void GameField::clear() {
+    for (size_t i = 0; i < m_Field.size(); i++) {
+        for (size_t j = 0; j < m_Field[i].size(); j++) {
+            m_Field[i][j] = ConsoleOutput::Symbols::AIR;
+        }
+    }
+}

@@ -11,6 +11,8 @@ class Tetris : public Engine {
     const size_t m_Width = TetrisConstants::Field::m_Width;
     const size_t m_Height = TetrisConstants::Field::m_Height;
     Figure *m_Figure;
+    bool m_End = false;
+    bool m_Exit = false;
 
 public:
     Tetris();
@@ -19,11 +21,11 @@ public:
     }
 
 protected:
-    bool end() const override { return false; }
+    bool end() const override { return m_Exit; }
 
-    void on_button_press(const int button) override;
+    void on_button_press(int button, int time) override;
 
-    void update(const int dt) override;
+    void update(int dt) override;
 
     void render(PaintDevice &paintDevice) override;
 };

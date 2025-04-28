@@ -12,7 +12,7 @@ protected:
     double m_TimeFromLastUpdate = 0;
     double m_TimeForUpdate = TetrisConstants::Field::NormalSpeed;
     std::vector<std::vector<Point> > m_Body;
-    Point m_PositionBackup;
+    Point m_PositionBackup = TetrisConstants::Figure::SPAWNPOINT;
     size_t m_CurrentRotate = 0;
     size_t m_CurrentRotateBackup = 0;
 
@@ -37,8 +37,6 @@ public:
     void backup();
 
     void restore();
-
-    void boost();
 
     void rotate();
 };
