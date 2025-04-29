@@ -48,6 +48,16 @@ namespace TetrisConstants {
             {Point(0, -1), Point(0, 0), Point(1, 0), Point(1, 1)},
         };
         const std::vector AllFigures = {I, J, L, O, Z, T, S};
+        const std::vector<int> AllColors = {
+            FOREGROUND_BLUE | FOREGROUND_INTENSITY,
+            FOREGROUND_BLUE,
+            FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY,
+            FOREGROUND_RED | FOREGROUND_GREEN,
+            FOREGROUND_RED,
+            FOREGROUND_RED | FOREGROUND_BLUE,
+            FOREGROUND_GREEN
+        };
+        const int WHITE = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE;
     }
 
     namespace Field {

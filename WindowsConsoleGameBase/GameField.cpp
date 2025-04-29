@@ -1,10 +1,12 @@
 #include "GameField.h"
+#include <vector>
 #include "ConsoleOutput.h"
 
 void GameField::resize(size_t width, size_t height) {
     m_Width = width;
     m_Height = height;
     m_Field = std::vector(m_Height - 2, std::vector(m_Width - 2, ConsoleOutput::Symbols::AIR));
+    m_color = std::vector(m_Height - 2, std::vector(m_Width - 2, TetrisConstants::Figure::WHITE));
 }
 
 void GameField::render(PaintDevice &paintDevice) {
@@ -31,7 +33,7 @@ void GameField::render(PaintDevice &paintDevice) {
     for (int y = 0; y < m_Field.size(); y++) {
         for (int x = 0; x < m_Field[y].size(); x++) {
             Vector2 v(x + 1, y + 1);
-            paintDevice.set_char(v, m_Field[y][x]);
+            paintDevice.set_char(v, m_Field[y][x], m_color[y][x]);
         }
     }
 }
@@ -57,6 +59,7 @@ void GameField::merge(const Figure &figure) {
     Point position = figure.get_position();
     for (const Point &point: figure.get_body()) {
         m_Field[point.y + position.y - 1][point.x + position.x - 1] = ConsoleOutput::Symbols::BLOCK;
+        m_color[point.y + position.y - 1][point.x + position.x - 1] = figure.get_color();
     }
     for (size_t i = 0; i < m_Field.size(); i++) {
         bool lineIsFull = true;
@@ -66,8 +69,10 @@ void GameField::merge(const Figure &figure) {
         if (lineIsFull) {
             for (size_t j = i; j > 0; j--) {
                 m_Field[j] = m_Field[j - 1];
+                m_color[j] = m_color[j - 1];
             }
             m_Field[0] = std::vector<wchar_t>(m_Width - 2, ConsoleOutput::Symbols::AIR);
+            m_color[0] = std::vector<int>(m_Width - 2, TetrisConstants::Figure::WHITE);
         }
     }
 }
@@ -76,6 +81,7 @@ void GameField::clear() {
     for (size_t i = 0; i < m_Field.size(); i++) {
         for (size_t j = 0; j < m_Field[i].size(); j++) {
             m_Field[i][j] = ConsoleOutput::Symbols::AIR;
+            m_color[i][j] = TetrisConstants::Figure::WHITE;
         }
     }
 }

@@ -7,7 +7,7 @@ class IBlock : public Figure {
 public:
     IBlock(Point position);
 
-    static std::vector<std::vector<Point> > choiceFigure();
+    static int choiceFigure();
 };
 
 

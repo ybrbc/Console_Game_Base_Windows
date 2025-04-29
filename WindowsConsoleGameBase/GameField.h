@@ -10,6 +10,7 @@ class GameField {
     size_t m_Width;
     size_t m_Height;
     std::vector<std::vector<wchar_t> > m_Field;
+    std::vector<std::vector<int> > m_color;
 
 public:
     void resize(size_t width, size_t height);

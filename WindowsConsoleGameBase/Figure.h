@@ -15,6 +15,7 @@ protected:
     Point m_PositionBackup = TetrisConstants::Figure::spawnPoint;
     size_t m_CurrentRotate = 0;
     size_t m_CurrentRotateBackup = 0;
+    int m_color = TetrisConstants::Figure::WHITE;
 
 public:
     Figure(Point position): m_Position(position) {
@@ -39,6 +40,8 @@ public:
     void restore();
 
     void rotate();
+
+    int get_color() const;
 };
 
 

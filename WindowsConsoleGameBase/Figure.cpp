@@ -6,7 +6,7 @@ void Figure::render(PaintDevice &paintDevice) {
     for (const Point &point: m_Body[m_CurrentRotate]) {
         Vector2 v(point.x + m_Position.x,
                   point.y + m_Position.y);
-        paintDevice.set_char(v, ConsoleOutput::Symbols::BLOCK);
+        paintDevice.set_char(v, ConsoleOutput::Symbols::BLOCK, m_color);
     }
 }
 
@@ -51,4 +51,8 @@ void Figure::restore() {
 
 void Figure::rotate() {
     if (++m_CurrentRotate > 3) { m_CurrentRotate = 0; }
+}
+
+int Figure::get_color() const {
+    return m_color;
 }
