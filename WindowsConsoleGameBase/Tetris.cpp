@@ -4,7 +4,11 @@
 Tetris::Tetris() {
     paint_device().resize(Size(m_Width + TetrisConstants::Field::m_InfoPanelWidth, m_Height));
     m_GameField.resize(m_Width, m_Height);
+    m_InfoField.resize(TetrisConstants::Field::m_Width, 0,
+                       TetrisConstants::Field::m_Width + TetrisConstants::Field::m_InfoPanelWidth,
+                       TetrisConstants::Field::m_Height);
     m_Figure = new IBlock(TetrisConstants::Figure::spawnPoint);
+    m_NextFigure = new IBlock(TetrisConstants::Field::NextBlock);
     track_key(VK_LEFT);
     track_key(VK_RIGHT);
     track_key(VK_DOWN);
@@ -27,6 +31,7 @@ void Tetris::on_button_press(int button, int time) {
             case 'R':
                 m_End = false;
                 m_GameField.clear();
+                m_InfoField.clear_score();
                 break;
         }
     } else {
@@ -66,13 +71,19 @@ void Tetris::update(int dt) {
         m_Figure->update(dt);
         if (m_GameField.has_collision(*m_Figure)) {
             m_Figure->restore();
-            m_GameField.merge(*m_Figure);
-            m_Figure = new IBlock(TetrisConstants::Figure::spawnPoint);
+            int numBrokenLines = m_GameField.merge(*m_Figure);
+            m_Figure = m_NextFigure;
+            m_Figure->set_position(TetrisConstants::Figure::spawnPoint);
+            m_NextFigure = new IBlock(TetrisConstants::Field::NextBlock);
+            m_InfoField.add_score(TetrisConstants::Score::pointsForPlacingBlock);
+            m_InfoField.add_score(TetrisConstants::Score::pointsForBreakingLines[numBrokenLines]);
         }
     }
 }
 
 void Tetris::render(PaintDevice &paintDevice) {
     m_GameField.render(paintDevice);
+    m_InfoField.render(paintDevice);
     m_Figure->render(paintDevice);
+    m_NextFigure->render(paintDevice);
 }

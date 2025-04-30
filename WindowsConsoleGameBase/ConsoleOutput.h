@@ -6,6 +6,7 @@ namespace ConsoleOutput {
     namespace Symbols {
         constexpr wchar_t BLOCK = 8; // ◘
         constexpr wchar_t AIR = 7; // •
+        constexpr wchar_t SPACE = ' '; //
         constexpr wchar_t LR_BORDER = 186; // ║
         constexpr wchar_t UD_BORDER = 205; // ═
         constexpr wchar_t UL_CORNER = 201; // ╔
@@ -16,6 +17,8 @@ namespace ConsoleOutput {
     }
 
     namespace Messages {
+        constexpr std::string score = "SCORE:";
+        constexpr std::string nextBlock = "NEXT:";
     }
 }
 

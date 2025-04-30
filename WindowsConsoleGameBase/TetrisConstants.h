@@ -66,6 +66,15 @@ namespace TetrisConstants {
         constexpr size_t m_InfoPanelWidth = 6;
         constexpr size_t NormalSpeed = 500;
         constexpr size_t BoostSpeed = 250;
+        const Point NextBlockText = Point(m_Width + 1, 1);
+        const Point NextBlock = Point(m_Width + 2, 3);
+        const Point ScoreText = Point(m_Width, 6);
+        const Point Score = Point(m_Width + 2, 7);
+    }
+
+    namespace Score {
+        constexpr size_t pointsForPlacingBlock = 10;
+        const std::vector<int> pointsForBreakingLines = {0, 50, 80, 160, 320};
     }
 }
 #endif //TETRISCONSTANTS_H

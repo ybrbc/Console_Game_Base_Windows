@@ -3,14 +3,17 @@
 #include "Engine.h"
 #include "Figure.h"
 #include "GameField.h"
+#include "InfoField.h"
 #include "TetrisConstants.h"
 
 
 class Tetris : public Engine {
     GameField m_GameField;
+    InfoField m_InfoField;
     const size_t m_Width = TetrisConstants::Field::m_Width;
     const size_t m_Height = TetrisConstants::Field::m_Height;
     Figure *m_Figure;
+    Figure *m_NextFigure;
     bool m_End = false;
     bool m_Exit = false;
 

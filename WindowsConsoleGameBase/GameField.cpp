@@ -55,12 +55,13 @@ bool GameField::has_collision(const Figure &figure) {
     return false;
 }
 
-void GameField::merge(const Figure &figure) {
+int GameField::merge(const Figure &figure) {
     Point position = figure.get_position();
     for (const Point &point: figure.get_body()) {
         m_Field[point.y + position.y - 1][point.x + position.x - 1] = ConsoleOutput::Symbols::BLOCK;
         m_color[point.y + position.y - 1][point.x + position.x - 1] = figure.get_color();
     }
+    int linesIsFull = 0;
     for (size_t i = 0; i < m_Field.size(); i++) {
         bool lineIsFull = true;
         for (size_t j = 0; j < m_Field[i].size(); j++) {
@@ -73,8 +74,10 @@ void GameField::merge(const Figure &figure) {
             }
             m_Field[0] = std::vector<wchar_t>(m_Width - 2, ConsoleOutput::Symbols::AIR);
             m_color[0] = std::vector<int>(m_Width - 2, TetrisConstants::Figure::WHITE);
+            ++linesIsFull;
         }
     }
+    return linesIsFull;
 }
 
 void GameField::clear() {

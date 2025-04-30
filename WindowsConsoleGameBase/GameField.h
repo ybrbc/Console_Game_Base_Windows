@@ -21,7 +21,7 @@ public:
 
     bool has_collision(const Figure &figure);
 
-    void merge(const Figure &figure);
+    int merge(const Figure &figure);
 
     void clear();
 };
